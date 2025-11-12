@@ -64,46 +64,31 @@ namespace APIsAndJSON
             var cloudiness = weatherData["clouds"]?["all"]?.ToString();
             
             Console.WriteLine("\n" + new string('=', 70));
-            Console.WriteLine($"🌍  WEATHER FORECAST FOR {cityName?.ToUpper()}, {country}");
+            Console.WriteLine($"WEATHER FORECAST FOR {cityName?.ToUpper()}, {country}");
             Console.WriteLine(new string('=', 70));
             
-            Console.WriteLine($"\n☁️  Conditions: {description?.ToUpper()}");
+            Console.WriteLine($"\nConditions: {description?.ToUpper()}");
             Console.WriteLine(new string('-', 70));
             
-            Console.WriteLine($"\n🌡️  TEMPERATURE:");
+            Console.WriteLine($"\nTEMPERATURE:");
             Console.WriteLine($"    Current:     {temperature}°F");
             Console.WriteLine($"    Feels Like:  {feelsLike}°F");
             Console.WriteLine($"    High:        {tempMax}°F");
             Console.WriteLine($"    Low:         {tempMin}°F");
             
-            Console.WriteLine($"\n💧  HUMIDITY: {humidity}%");
-            Console.WriteLine($"💨  WIND SPEED: {windSpeed} mph");
-            Console.WriteLine($"☁️  CLOUDINESS: {cloudiness}%");
+            Console.WriteLine($"\nHUMIDITY: {humidity}%");
+            Console.WriteLine($"WIND SPEED: {windSpeed} mph");
+            Console.WriteLine($"OVERCAST: {cloudiness}%");
             
             Console.WriteLine("\n" + new string('=', 70) + "\n");
         }
 
         private void HandleError(AggregateException ex)
         {
-            if (ex.InnerException is HttpRequestException)
-            {
-                Console.WriteLine("\n" + new string('=', 70));
-                Console.WriteLine("WEATHER API ERROR");
-                Console.WriteLine(new string('=', 70));
-                Console.WriteLine("\nUnable to fetch weather data.");
-                Console.WriteLine("\nPossible reasons:");
-                Console.WriteLine("  1. API key is not activated yet (can take a few hours)");
-                Console.WriteLine("  2. Invalid API key");
-                Console.WriteLine("  3. City name not found or invalid coordinates");
-                Console.WriteLine("\nIf you just created your API key, please wait and try again later.");
-                Console.WriteLine($"\nError details: {ex.InnerException.Message}");
-                Console.WriteLine("\n" + new string('=', 70) + "\n");
-            }
-            else
-            {
+            
                 Console.WriteLine("\nAn unexpected error occurred:");
                 Console.WriteLine(ex.Message);
-            }
         }
     }
 }
+

@@ -23,10 +23,11 @@ namespace APIsAndJSON
             
             Console.WriteLine("\n\nNow let's check the weather!\n");
             
-            var apiKey = "b1b2e8769deb842d779145148f91bfdc";
+            var apiKey = "aa12b2484ee0026f39967f99159b3b44";
             var weatherAPI = new OpenWeatherMapAPI(apiKey);
             
-            weatherAPI.GetCurrentWeatherByCoordinates(36.1627, -86.7816);
+            weatherAPI.GetCurrentWeatherByCoordinates(40.4406, -79.9958);
+            weatherAPI.GetCurrentWeather("New York City");
            
         }
         
